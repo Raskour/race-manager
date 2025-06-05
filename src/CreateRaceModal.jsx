@@ -56,7 +56,7 @@ function CreateRaceModal({ isOpen, onClose, onSave }) {
     <div className="overlay">
       <div className="content-wrapper" onClick={(e) => e.stopPropagation()}>
         <h2>Create New Race</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="create-race-form">
           <label>
             Race Title:
             <input

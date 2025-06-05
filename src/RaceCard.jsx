@@ -2,7 +2,7 @@ import React from 'react';
 
 function RaceCard({ title, status, participants, handleAddResult }) {
   return (
-    <article className="race-card">
+    <article className="race-card" data-testid="race-card">
       <h2>{title}</h2>
       <div>
         <h3>Participants</h3>
@@ -15,7 +15,7 @@ function RaceCard({ title, status, participants, handleAddResult }) {
           ))}
         </ul>
       </div>
-      <span>Status: {status}</span>
+      <span data-testid="race-status">Status: {status}</span>
       {status === 'Pending' && (
         <button onClick={handleAddResult}>Add Result</button>
       )}

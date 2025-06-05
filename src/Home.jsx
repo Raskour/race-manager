@@ -39,7 +39,7 @@ const Home = () => {
     <div className="home-container">
       <h2>Races</h2>
       <button className="create-race-btn" onClick={handleCreateRace}>
-        + Create Race
+        + Add New Race
       </button>
       <CreateRaceModal
         isOpen={isOpen}

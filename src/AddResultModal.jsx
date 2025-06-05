@@ -58,6 +58,7 @@ function AddResultModal({ isOpen, handleSaveResult, selectedRace, onClose }) {
                   <td>{participant.lane}</td>
                   <td>
                     <input
+                      data-testid="position"
                       name="results"
                       id="result"
                       required
