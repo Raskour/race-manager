@@ -36,6 +36,7 @@ function CreateRaceModal({ isOpen, onClose, onSave }) {
     }
 
     const race = {
+      id: crypto.randomUUID(),
       title: raceTitle,
       participants,
       status: 'Pending', //when the race is created the status is pending

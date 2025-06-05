@@ -21,7 +21,7 @@ code {
 }
 
 .race-card {
-  width: 300px;
+  min-width: 300px;
   min-height: 180px;
   padding: 16px;
   margin: 12px;

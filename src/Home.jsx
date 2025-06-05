@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import RaceCard from './RaceCard';
 import CreateRaceModal from './CreateRaceModal';
+import AddResultModal from './AddResultModal';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [races, setRaces] = useState([]);
+  const [selectedRace, setSelectedRace] = useState(null);
 
   function handleCreateRace() {
     setIsOpen(true);
@@ -18,6 +20,21 @@ const Home = () => {
     setRaces([...races, newRace]);
     setIsOpen(false);
   }
+
+  function handleSaveResult(raceResult) {
+    const updatedRaces = [...races];
+    const raceIndex = updatedRaces.findIndex(
+      (race) => race.id === raceResult.id
+    );
+    updatedRaces[raceIndex] = raceResult;
+    setRaces(updatedRaces);
+    alert('Results are saved');
+  }
+  function handleAddResult(raceId) {
+    const selectedRace = races.find((race) => race.id === raceId);
+    setSelectedRace(selectedRace);
+  }
+
   return (
     <div className="home-container">
       <h2>Races</h2>
@@ -34,13 +51,22 @@ const Home = () => {
       <div className="card-grid">
         {races.map((race, index) => (
           <RaceCard
-            key={index}
+            key={race.id}
             title={race.title}
             status={race.status}
             participants={race.participants}
+            handleAddResult={() => handleAddResult(race.id)}
           />
         ))}
       </div>
+      {selectedRace && (
+        <AddResultModal
+          isOpen
+          selectedRace={selectedRace}
+          handleSaveResult={handleSaveResult}
+          onClose={() => setSelectedRace(null)}
+        />
+      )}
     </div>
   );
 };
